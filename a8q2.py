@@ -6,6 +6,19 @@
 """
 
 def fibonacci(n):
+    """
+    Purpose:
+        Calculates the fibonacci sequence for an integer n.
+
+    Pre-Conditions:
+        n: An input integer.
+
+    Post-Conditions:
+        Calculates the fibonacci sequence for n.
+
+    Return Values:
+        The fibonacci sequence for n.
+    """
     if n == 0:
         return 0
     if n == 1:
@@ -14,6 +27,19 @@ def fibonacci(n):
         return fibonacci(n-1) + fibonacci(n-2)
 
 def moosonacci(n):
+    """
+    Purpose:
+        Calculates the moosonacci sequence for an integer n.
+
+    Pre-Conditions:
+        n: An input integer.
+
+    Post-Conditions:
+        Calculates the moosonacci sequence for n.
+
+    Return Values:
+        The moosonacci sequence for n.
+    """
     if n == 0:
         return 0
     if n == 1:
