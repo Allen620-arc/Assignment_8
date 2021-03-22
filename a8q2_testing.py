@@ -7,7 +7,7 @@
 
 import a8q2
 
-test_suite = [
+test_suite_fibonacci = [
 
     {"inputs": 0,
      "outputs": 0,
@@ -34,8 +34,41 @@ test_suite = [
      "reason": "Returns 1 since the fibonacci for 5 is 5."},
 ]
 
-for test in test_suite:
+test_suite_moosonacci = [
+
+    {"inputs": 0,
+     "outputs": 0,
+     "reason": "Returns 0 since the moosonacci for 0 is 0." },
+
+    {"inputs": 1,
+     "outputs": 1,
+     "reason": "Returns 1 since the moosonacci for 1 is 1."},
+
+    {"inputs": 2,
+     "outputs": 2,
+     "reason": "Returns 1 since the moosonacci for 2 is 2."},
+
+    {"inputs": 3,
+     "outputs": 3,
+     "reason": "Returns 1 since the moosonacci for 3 is 3."},
+
+    {"inputs": 4,
+     "outputs": 6,
+     "reason": "Returns 1 since the moosonacci for 4 is 6."},
+
+    {"inputs": 5,
+     "outputs": 11,
+     "reason": "Returns 1 since the moosonacci for 5 is 11."},
+]
+
+for test in test_suite_fibonacci:
     inputs = test["inputs"]
     result = a8q2.fibonacci(inputs)
     if result != test["outputs"]:
-        print("Testing fault: selection_sort() returned", result, "on inputs", inputs, "(",test["reason"],")")
+        print("Testing fault: fibonacci() returned", result, "on inputs", inputs, "(",test["reason"],")")
+
+for test in test_suite_moosonacci:
+    inputs = test["inputs"]
+    result = a8q2.moosonacci(inputs)
+    if result != test["outputs"]:
+        print("Testing fault: moosonacci() returned", result, "on inputs", inputs, "(",test["reason"],")")
