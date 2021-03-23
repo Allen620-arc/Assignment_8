@@ -5,6 +5,7 @@
     Instructor: Jeffrey Long
 """
 
+
 def fibonacci(n):
     """
     Purpose:
@@ -24,7 +25,8 @@ def fibonacci(n):
     if n == 1:
         return 1
     else:
-        return fibonacci(n-1) + fibonacci(n-2)
+        return fibonacci(n - 1) + fibonacci(n - 2)
+
 
 def moosonacci(n):
     """
@@ -47,4 +49,28 @@ def moosonacci(n):
     if n == 2:
         return 2
     else:
-        return moosonacci(n-1) + moosonacci(n-2) + moosonacci(n-3)
+        return moosonacci(n - 1) + moosonacci(n - 2) + moosonacci(n - 3)
+
+
+def substr(find_substring, rep_substring, string):
+    """
+    Purpose:
+        Finds find_substring in string and replaces the substring with rep_substring.
+
+    Pre-Conditions:
+        find_substring: The input substring.
+        rep_substring: The replacement substring.
+        string: The input string.
+
+    Post-Conditions:
+        Finds the find_substring character in string and replaces it with the rep_substring character.
+
+    Return Values:
+        The new string containing the replaced substring.
+    """
+    if len(string) == 0:
+        return ""
+    if string[0] == find_substring:
+        return rep_substring + substr(find_substring, rep_substring, string[1:])
+    else:
+        return string[0] + substr(find_substring, rep_substring, string[1:])
