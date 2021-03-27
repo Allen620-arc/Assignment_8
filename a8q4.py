@@ -6,7 +6,7 @@
 """
 
 
-def fnReturnList(input_file):
+def ReturnMaze(input_file):
     """
     Purpose:
         Reads the input file and executes a list of lists of strings.
@@ -21,33 +21,45 @@ def fnReturnList(input_file):
         A list of strings.
     """
     f = open(input_file, 'r')  # Opens the incoming file.
-    m = []  # Initializes a list of integers.
+    input_maze = []  # Initializes a list of integers.
     for line in f:
         new_line = line.rstrip().split()  # Strips every line of whitespace and commas.
-        m.append(new_line)  # Adds the stripped line into the list of integers.
-    return m
+        input_maze.append(new_line)  # Adds the stripped line into the list of integers.
+    return input_maze
 
 
-def SolveMaze(m, s, g):
+def SolveMaze(maze, starting_point, goal_point):
     """
     Purpose:
-        To determine if a path exists within the maze, m, from the current location s to the goal location g.
+        To determine if a path exists in input_maze, from the current location starting_point to the goal
+        location goal_point.
 
     Pre-Conditions:
-        :param m: The input maze from a file.
-        :param s: The starting point of the maze.
-        :param g: The end point of the maze.
+        :param maze: The input maze from a file.
+        :param starting_point: The starting point of the maze.
+        :param goal_point: The end point of the maze.
 
     Post-Conditions:
         Changes all of the 0s of the input list to Ps.
 
     Return Values:
-        The updated list of lists with the path in the input maze.
+        If there is a possible path from the starting point to the end point.
     """
-    if m == [[]]:
+    r = starting_point[0]
+    c = starting_point[1]
+    if maze[r][c] == '1':
         return False
-    if s == g:
-        return True
+    if maze[r][c] == 'P':
+        return False
+    if starting_point == goal_point:
+        return True, maze
     else:
-
-        return SolveMaze(m, s, g)
+        maze[r][c] = 'P'
+        if (r < len(maze) - 1 and SolveMaze(maze, (r + 1, c), goal_point)) \
+                or (c < len(maze[0]) - 1 and SolveMaze(maze, (r, c + 1), goal_point)) or (
+                c > 0 and SolveMaze(maze, (r, c - 1), goal_point)) \
+                or (r > 0 and SolveMaze(maze, (r - 1, c), goal_point)):
+            return True
+        else:
+            maze[r][c] = '0'
+            return False
