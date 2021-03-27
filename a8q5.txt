@@ -1,0 +1,9 @@
+Name: Allen Keettikkal
+NSID: alk423
+Student Number: 11278995
+Instructor: Jeffrey Long
+
+c) The base case is supposed to represent the scenario when the length of a or b is equal to 1. This way, we can ignore
+    the paths that only have one unit of length.
+
+d) The problem size is made smaller as the lengths themselves become smaller for each path.
